@@ -1,0 +1,32 @@
+# Core Deep Learning & Vision-Language
+torch>=2.2.0
+torchvision>=0.17.0
+open-clip-torch>=2.24.0
+timm>=0.9.12
+
+# Vector Retrieval & Indexing
+faiss-cpu>=1.8.0
+
+# Geospatial & Raster Operations
+rasterio>=1.3.9
+shapely>=2.0.2
+geopandas>=0.14.2
+pyproj>=3.6.1
+
+# Scientific Computing & Computer Vision
+numpy>=1.26.0
+scipy>=1.12.0
+scikit-learn>=1.4.0
+opencv-python-headless>=4.9.0
+pillow>=10.2.0
+
+# Backend & API Framework
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+pydantic>=2.6.0
+python-multipart>=0.0.9
+
+# Persistence & Utilities
+tqdm>=4.66.0
+pyyaml>=6.0.1
+requests>=2.31.0
