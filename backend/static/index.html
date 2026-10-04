@@ -140,16 +140,16 @@
         <div class="flex items-start justify-between border-b border-gray-800 pb-4">
           <div>
             <div class="flex items-center space-x-2">
-              <span id="activeTileBadge" class="bg-gray-800 border border-gray-700 text-gray-300 font-mono text-xs px-2.5 py-0.5 rounded">T_0001_1</span>
-              <h2 id="activeLocationName" class="text-lg font-bold text-white">Mula-Mutha Riverbank (Pune)</h2>
+              <span id="activeTileBadge" class="bg-gray-800 border border-gray-700 text-gray-300 font-mono text-xs px-2.5 py-0.5 rounded">T_REAL_RS_02_2026</span>
+              <h2 id="activeLocationName" class="text-lg font-bold text-white">Varanasi Ganga Riverfront (Real Satellite)</h2>
               <span id="changeTypeBadge" class="bg-emerald-950 text-emerald-300 border border-emerald-700 text-xs px-2.5 py-0.5 rounded font-semibold badge-glow">NEW CONSTRUCTION</span>
             </div>
-            <p id="activeDescription" class="text-xs text-gray-400 mt-1">Multi-epoch surveillance confirms newly built concrete industrial structure emerging near riverbank.</p>
+            <p id="activeDescription" class="text-xs text-gray-400 mt-1">Real optical satellite observation confirming newly built concrete riverfront structures and promenade access along the river basin.</p>
           </div>
 
           <div class="text-right">
             <div class="text-xs text-gray-400 uppercase">Composite Confidence</div>
-            <div id="confidenceScore" class="text-2xl font-black text-emerald-400 font-mono">91.4%</div>
+            <div id="confidenceScore" class="text-2xl font-black text-emerald-400 font-mono">92.8%</div>
             <div class="text-[10px] text-gray-500">Quality-Weighted</div>
           </div>
         </div>
@@ -176,11 +176,11 @@
               <span id="t1DateLabel" class="text-gray-500 font-mono">2023-05-15</span>
             </div>
             <div class="aspect-square bg-gray-950 rounded overflow-hidden flex items-center justify-center border border-gray-800">
-              <img id="t1Image" src="/tiles/T_0001_1.png" alt="T1 Baseline" class="w-full h-full object-cover">
+              <img id="t1Image" src="/tiles/T_REAL_RS_02_2023.png" alt="T1 Baseline" class="w-full h-full object-cover">
             </div>
             <div class="mt-2 text-[11px] text-gray-400 flex justify-between">
               <span>Sensor: Sentinel-2A</span>
-              <span>Cloud: &lt;1.5%</span>
+              <span>Cloud: &lt;1.0%</span>
             </div>
           </div>
 
@@ -190,7 +190,7 @@
               <span id="t2DateLabel" class="text-gray-500 font-mono">2026-05-12</span>
             </div>
             <div class="aspect-square bg-gray-950 rounded overflow-hidden flex items-center justify-center border border-emerald-900/40 border-2">
-              <img id="t2Image" src="/tiles/T_0004_1.png" alt="T2 Latest" class="w-full h-full object-cover">
+              <img id="t2Image" src="/tiles/T_REAL_RS_02_2026.png" alt="T2 Latest" class="w-full h-full object-cover">
             </div>
             <div class="mt-2 text-[11px] text-gray-400 flex justify-between">
               <span>Sensor: Sentinel-2B</span>
@@ -385,7 +385,7 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    let currentTileId = "T_0001_1";
+    let currentTileId = "T_REAL_RS_02_2026";
     let activeChangeId = null;
     let map = null;
     let markersLayer = null;

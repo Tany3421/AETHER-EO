@@ -7,16 +7,16 @@
     "air_gapped": true
   },
   "archive_metrics": {
-    "total_indexed_tiles": 84,
+    "total_indexed_tiles": 114,
     "vector_dimension": 512,
-    "index_size_kb": 168.12,
+    "index_size_kb": 228.12,
     "incremental_ingest_time_per_tile_ms": 32.09
   },
   "semantic_retrieval": {
-    "mean_query_latency_ms": 0.78,
+    "mean_query_latency_ms": 0.73,
     "recall_at_5": 1.0,
     "recall_at_10": 1.0,
-    "precision_at_5": 1.0,
+    "precision_at_5": 0.92,
     "mean_reciprocal_rank": 1.0
   },
   "change_detection": {
