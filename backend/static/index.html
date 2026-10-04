@@ -46,6 +46,9 @@
       <button onclick="triggerIncrementalIngest()" class="text-xs bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-3 py-1.5 rounded transition flex items-center space-x-1">
         <span>⚡ Demo Incremental Ingest</span>
       </button>
+      <button onclick="openUploadModal()" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-3 py-1.5 rounded transition flex items-center space-x-1 shadow">
+        <span>📤 Ingest Real Image</span>
+      </button>
     </div>
   </header>
 
@@ -266,6 +269,97 @@
 
     </div>
   </main>
+
+  <!-- REAL SATELLITE IMAGE UPLOAD MODAL -->
+  <div id="uploadModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 hidden flex items-center justify-center p-6">
+    <div class="bg-gray-900 border border-gray-700 rounded-xl max-w-xl w-full p-6 shadow-2xl flex flex-col">
+      <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+        <div class="flex items-center space-x-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider">Ingest Real Satellite Imagery</h3>
+        </div>
+        <button onclick="closeUploadModal()" class="text-gray-400 hover:text-white text-lg">✕</button>
+      </div>
+
+      <form id="realUploadForm" onsubmit="submitRealImageUpload(event)" class="space-y-4 my-4 text-xs">
+        <div>
+          <label class="block text-gray-400 font-semibold mb-1">Choose Image File (GeoTIFF / PNG / JPG)</label>
+          <input type="file" id="realImageFile" accept=".png,.jpg,.jpeg,.tif,.tiff" required
+                 onchange="previewUploadImage(event)"
+                 class="w-full bg-gray-800 border border-gray-700 text-gray-200 rounded p-2 focus:ring-1 focus:ring-emerald-500" />
+          <div id="imagePreviewContainer" class="mt-2 hidden flex items-center space-x-3 bg-gray-950 p-2 rounded border border-gray-800">
+            <img id="imagePreview" src="#" alt="Preview" class="w-16 h-16 object-cover rounded border border-gray-700" />
+            <div class="text-[11px] text-gray-400">
+              <span id="previewFileName" class="font-bold text-emerald-400 block"></span>
+              <span>Ready for 512-D RemoteCLIP pixel embedding</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-gray-400 mb-1">Location / Site Name</label>
+            <input type="text" id="uploadLocationName" value="Kolkata Hooghly Riverfront" required
+                   class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded px-3 py-2" />
+          </div>
+          <div>
+            <label class="block text-gray-400 mb-1">Acquisition Date</label>
+            <input type="date" id="uploadDate" value="2026-06-15" required
+                   class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded px-3 py-2" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-gray-400 mb-1">Latitude</label>
+            <input type="number" step="0.00001" id="uploadLat" value="22.5726" required
+                   class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded px-3 py-2 font-mono" />
+          </div>
+          <div>
+            <label class="block text-gray-400 mb-1">Longitude</label>
+            <input type="number" step="0.00001" id="uploadLon" value="88.3639" required
+                   class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded px-3 py-2 font-mono" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-gray-400 mb-1">Target Semantic Theme</label>
+            <select id="uploadTheme" class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded px-3 py-2">
+              <option value="river_construction">Riverbank Construction & Structures</option>
+              <option value="river_road">River Bridge & Road Infrastructure</option>
+              <option value="industrial_complex">Industrial Sheds & Logistics Park</option>
+              <option value="water_extent">Water Body & Basin Dynamics</option>
+              <option value="land_clearance">Vegetation Clearance & Quarry</option>
+              <option value="seasonal_phenology">Agricultural Cropping Cycle</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-gray-400 mb-1">Sensor Tag</label>
+            <select id="uploadSensor" class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded px-3 py-2">
+              <option value="Sentinel-2A MSI">Sentinel-2A MSI (10m)</option>
+              <option value="Sentinel-2B MSI">Sentinel-2B MSI (10m)</option>
+              <option value="Landsat-9 OLI-2">Landsat-9 OLI-2 (15m/30m)</option>
+              <option value="Drone / Aerial Ortho">Drone / Aerial Orthomosaic (Sub-meter)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-gray-400 mb-1">Semantic Description / Prompt</label>
+          <input type="text" id="uploadDescription" value="Real satellite observation showing river bank construction and structural expansion"
+                 class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded px-3 py-2" />
+        </div>
+
+        <div class="border-t border-gray-800 pt-3 flex justify-end space-x-3">
+          <button type="button" onclick="closeUploadModal()" class="px-4 py-2 rounded bg-gray-800 hover:bg-gray-700 text-gray-300">Cancel</button>
+          <button type="submit" id="uploadSubmitBtn" class="px-5 py-2 rounded bg-emerald-600 hover:bg-emerald-500 font-bold text-white flex items-center space-x-1.5 shadow">
+            <span>⚡ Compute Embedding & Ingest</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- PROVENANCE MODAL -->
   <div id="provenanceModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-6">
@@ -560,6 +654,75 @@
       } finally {
         btn.disabled = false;
         btn.innerHTML = '<span>⚡ Demo Incremental Ingest</span>';
+      }
+    }
+
+    function openUploadModal() {
+      document.getElementById('uploadModal').classList.remove('hidden');
+    }
+
+    function closeUploadModal() {
+      document.getElementById('uploadModal').classList.add('hidden');
+    }
+
+    function previewUploadImage(e) {
+      const file = e.target.files[0];
+      if (file) {
+        document.getElementById('previewFileName').textContent = file.name;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          document.getElementById('imagePreview').src = ev.target.result;
+          document.getElementById('imagePreviewContainer').classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    async function submitRealImageUpload(e) {
+      e.preventDefault();
+      const btn = document.getElementById('uploadSubmitBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span>⚡ Encoding & Indexing...</span>';
+
+      const fileInput = document.getElementById('realImageFile');
+      if (!fileInput.files[0]) {
+        alert("Please choose an image file first.");
+        btn.disabled = false;
+        btn.innerHTML = '<span>⚡ Compute Embedding & Ingest</span>';
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', fileInput.files[0]);
+      formData.append('location_name', document.getElementById('uploadLocationName').value);
+      formData.append('date', document.getElementById('uploadDate').value);
+      formData.append('latitude', document.getElementById('uploadLat').value);
+      formData.append('longitude', document.getElementById('uploadLon').value);
+      formData.append('theme', document.getElementById('uploadTheme').value);
+      formData.append('sensor', document.getElementById('uploadSensor').value);
+      formData.append('description', document.getElementById('uploadDescription').value);
+
+      try {
+        const resp = await fetch('/ingest/upload', {
+          method: 'POST',
+          body: formData
+        });
+        const res = await resp.json();
+        if (!resp.ok) throw new Error(res.detail || "Upload failed");
+
+        alert(`Real Satellite Image Ingested Successfully!\n\nTile ID: ${res.tile_id}\nSite: ${res.location_name}\nLatency: ${res.elapsed_ms}ms\nStatus: 512-D RemoteCLIP Embedding Computed & Indexed!`);
+
+        document.getElementById('statTiles').innerHTML = `Archive: <span class="text-white font-semibold">${res.total_tiles_now} Tiles</span>`;
+        closeUploadModal();
+
+        // Refresh search and focus on new tile
+        await executeSearch();
+        selectCandidate(res.tile_id);
+      } catch (err) {
+        alert("Error ingesting image: " + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<span>⚡ Compute Embedding & Ingest</span>';
       }
     }
 

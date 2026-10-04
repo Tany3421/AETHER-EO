@@ -1426,5 +1426,36 @@
     "theme": "river_construction",
     "description": "Incoming priority alert surveillance tile",
     "file_path": "D:\\Nakshatra\\SIH26227\\data\\tiles\\T_000084.png"
+  },
+  {
+    "tile_id": "T_000085",
+    "scene_id": "S2B_2026_LIVE_ALERT",
+    "sensor": "Sentinel-2 L2A",
+    "date": "2026-06-01",
+    "latitude": 18.525,
+    "longitude": 73.86,
+    "cloud_percentage": 2.5,
+    "resolution": 10,
+    "crs": "EPSG:4326",
+    "category": "Construction",
+    "file_path": "D:\\Nakshatra\\SIH26227\\data\\tiles\\T_000085.png"
+  },
+  {
+    "tile_id": "T_000086",
+    "scene_id": "REAL_S2_20260615_T_000086",
+    "sensor": "Sentinel-2A MSI",
+    "date": "2026-06-15",
+    "year": "2026",
+    "season": "Custom Ingestion",
+    "location_name": "Varanasi Ganga Ghat Basin",
+    "latitude": 25.3176,
+    "longitude": 82.9739,
+    "cloud_percentage": 0.5,
+    "resolution": 10.0,
+    "crs": "EPSG:4326",
+    "theme": "river_construction",
+    "description": "Real-world Earth Observation optical scene",
+    "file_path": "D:\\Nakshatra\\SIH26227\\data\\tiles\\T_000086.png",
+    "is_real_upload": true
   }
 ]
