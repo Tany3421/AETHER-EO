@@ -41,7 +41,7 @@
         <span>AIR-GAPPED SOVEREIGN MODE (OFFLINE READY)</span>
       </div>
       <div id="statTiles" class="text-xs text-gray-400 border-l border-gray-700 pl-4 font-mono">
-        Archive: <span class="text-white font-semibold">84 Tiles</span> (4 Epochs)
+        Archive: <span class="text-white font-semibold">40 Real Satellite Tiles</span> (10 Sites, 4 Epochs)
       </div>
       <button onclick="triggerIncrementalIngest()" class="text-xs bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-3 py-1.5 rounded transition flex items-center space-x-1">
         <span>⚡ Demo Incremental Ingest</span>
@@ -140,7 +140,7 @@
         <div class="flex items-start justify-between border-b border-gray-800 pb-4">
           <div>
             <div class="flex items-center space-x-2">
-              <span id="activeTileBadge" class="bg-gray-800 border border-gray-700 text-gray-300 font-mono text-xs px-2.5 py-0.5 rounded">T_REAL_RS_02_2026</span>
+              <span id="activeTileBadge" class="bg-gray-800 border border-gray-700 text-gray-300 font-mono text-xs px-2.5 py-0.5 rounded">T_SITE_01_2026</span>
               <h2 id="activeLocationName" class="text-lg font-bold text-white">Varanasi Ganga Riverfront (Real Satellite)</h2>
               <span id="changeTypeBadge" class="bg-emerald-950 text-emerald-300 border border-emerald-700 text-xs px-2.5 py-0.5 rounded font-semibold badge-glow">NEW CONSTRUCTION</span>
             </div>
@@ -176,7 +176,7 @@
               <span id="t1DateLabel" class="text-gray-500 font-mono">2023-05-15</span>
             </div>
             <div class="aspect-square bg-gray-950 rounded overflow-hidden flex items-center justify-center border border-gray-800">
-              <img id="t1Image" src="/tiles/T_REAL_RS_02_2023.png" alt="T1 Baseline" class="w-full h-full object-cover">
+              <img id="t1Image" src="/tiles/T_SITE_01_2023.png" alt="T1 Baseline" class="w-full h-full object-cover">
             </div>
             <div class="mt-2 text-[11px] text-gray-400 flex justify-between">
               <span>Sensor: Sentinel-2A</span>
@@ -190,7 +190,7 @@
               <span id="t2DateLabel" class="text-gray-500 font-mono">2026-05-12</span>
             </div>
             <div class="aspect-square bg-gray-950 rounded overflow-hidden flex items-center justify-center border border-emerald-900/40 border-2">
-              <img id="t2Image" src="/tiles/T_REAL_RS_02_2026.png" alt="T2 Latest" class="w-full h-full object-cover">
+              <img id="t2Image" src="/tiles/T_SITE_01_2026.png" alt="T2 Latest" class="w-full h-full object-cover">
             </div>
             <div class="mt-2 text-[11px] text-gray-400 flex justify-between">
               <span>Sensor: Sentinel-2B</span>
@@ -385,7 +385,7 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    let currentTileId = "T_REAL_RS_02_2026";
+    let currentTileId = "T_SITE_01_2026";
     let activeChangeId = null;
     let map = null;
     let markersLayer = null;

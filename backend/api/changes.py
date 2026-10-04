@@ -34,15 +34,22 @@ def analyze_tile_change(req: AnalyzeChangeRequest):
 
     lat, lon = target_meta.get("latitude"), target_meta.get("longitude")
     
-    # Find all tiles within 0.005 degrees (~500m) belonging to different dates
-    timeline_matches = []
+    # Find all tiles belonging to this site
+    target_site_prefix = req.tile_id.rsplit("_", 1)[0]
+    raw_matches = []
     for m in index.metadata:
-        dlat = abs(m.get("latitude", 0) - lat)
-        dlon = abs(m.get("longitude", 0) - lon)
-        if dlat < 0.005 and dlon < 0.005:
-            timeline_matches.append(m)
+        m_id = m.get("tile_id", "")
+        if m_id.startswith(target_site_prefix) or (abs(m.get("latitude", 0) - lat) < 0.005 and abs(m.get("longitude", 0) - lon) < 0.005):
+            raw_matches.append(m)
 
-    # Sort chronologically
+    # Deduplicate to strictly one tile per date/year
+    date_map = {}
+    for m in raw_matches:
+        d = m.get("date", "")
+        if d not in date_map:
+            date_map[d] = m
+
+    timeline_matches = list(date_map.values())
     timeline_matches.sort(key=lambda x: x.get("date", ""))
 
     if len(timeline_matches) < 2:
