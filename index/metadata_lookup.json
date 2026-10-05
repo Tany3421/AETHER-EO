@@ -718,5 +718,57 @@
     "description": "Real Earth Observation capture of Brahmaputra braided river channels and floodplain sandbars",
     "file_path": "D:\\Nakshatra\\SIH26227\\data\\tiles\\T_SITE_10_2026.png",
     "is_real_satellite": true
+  },
+  {
+    "tile_id": "T_000041",
+    "scene_id": "S2B_2026_LIVE_ALERT",
+    "sensor": "Sentinel-2 L2A",
+    "date": "2026-06-01",
+    "latitude": 18.525,
+    "longitude": 73.86,
+    "cloud_percentage": 2.5,
+    "resolution": 10,
+    "crs": "EPSG:4326",
+    "category": "Construction",
+    "file_path": "D:\\Nakshatra\\SIH26227\\data\\tiles\\T_000041.png"
+  },
+  {
+    "tile_id": "T_000042",
+    "scene_id": "S2B_2026_LIVE_ALERT",
+    "sensor": "Sentinel-2 L2A",
+    "date": "2026-06-01",
+    "latitude": 18.525,
+    "longitude": 73.86,
+    "cloud_percentage": 2.5,
+    "resolution": 10,
+    "crs": "EPSG:4326",
+    "category": "Construction",
+    "file_path": "D:\\Nakshatra\\SIH26227\\data\\tiles\\T_000042.png"
+  },
+  {
+    "tile_id": "T_000043",
+    "scene_id": "S2B_2026_LIVE_ALERT",
+    "sensor": "Sentinel-2 L2A",
+    "date": "2026-06-01",
+    "latitude": 18.525,
+    "longitude": 73.86,
+    "cloud_percentage": 2.5,
+    "resolution": 10,
+    "crs": "EPSG:4326",
+    "category": "Construction",
+    "file_path": "D:\\Nakshatra\\SIH26227\\data\\tiles\\T_000043.png"
+  },
+  {
+    "tile_id": "T_000044",
+    "scene_id": "S2B_2026_LIVE_ALERT",
+    "sensor": "Sentinel-2 L2A",
+    "date": "2026-06-01",
+    "latitude": 18.525,
+    "longitude": 73.86,
+    "cloud_percentage": 2.5,
+    "resolution": 10,
+    "crs": "EPSG:4326",
+    "category": "Construction",
+    "file_path": "D:\\Nakshatra\\SIH26227\\data\\tiles\\T_000044.png"
   }
 ]
